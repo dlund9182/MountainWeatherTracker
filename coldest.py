@@ -26,7 +26,9 @@ def sortDict(d):
 sqllitelDB = Database.Database('sqllite')
 # sqllitelDB = Database.Database('mysql')
 
-YRtemp = sqllitelDB.returnDictionary('select MOUNTAIN_NAME, AVG(temp) avg_temp from YR group by MOUNTAIN_NAME ORDER BY avg_temp ASC')
-MFtemp = sqllitelDB.returnDictionary('select MOUNTAIN_NAME, AVG(temp) avg_temp from MountainForcast group by MOUNTAIN_NAME ORDER BY avg_temp ASC')
+where = " WHERE date LIKE '2023%' "
+
+YRtemp = sqllitelDB.returnDictionary("select MOUNTAIN_NAME, AVG(temp) avg_temp from YR" + where + "group by MOUNTAIN_NAME ORDER BY avg_temp ASC")
+MFtemp = sqllitelDB.returnDictionary("select MOUNTAIN_NAME, AVG(temp) avg_temp from MountainForcast" + where + "group by MOUNTAIN_NAME ORDER BY avg_temp ASC")
 
 sortDict(merge(MFtemp,YRtemp))
