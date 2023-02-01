@@ -36,7 +36,7 @@ class Database:
                 # ) as self.__conn:
                 #     self.__c = self.__conn.cursor()
                 
-            except Error as e:
+            except Exception as e:
                 print("failed",e)
                 
     def deleteAll(self,table):
@@ -159,6 +159,13 @@ class Database:
     def close(self):
         conn = self.__conn
         conn.close()
+
+
+    
+    
+
+
+
 
 
     
